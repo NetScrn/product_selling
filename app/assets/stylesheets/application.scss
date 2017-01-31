@@ -1,5 +1,38 @@
 @import "bootstrap";
 
-.main-container {
+div.main-container {
   margin-top: 70px;
+
+  div.alert-notice {
+    @extend .alert-success;
+  }
+
+  div.alert-alert {
+    @extend .alert-danger;
+  }
+
+  nav.pagination {
+    margin-top: 20px;
+
+    @extend .pagination-lg;
+
+    span {
+      @extend .page-item;
+
+      a {
+        @extend .page-link;
+      }
+    }
+
+    .page.current {
+      @extend .page-item;
+      @extend .page-link;
+      background-color: #0275d8;
+      color: white;
+    }
+  }
+
+  div.products-table {
+    margin-top: 20px;
+  }
 }

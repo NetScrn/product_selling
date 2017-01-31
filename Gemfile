@@ -16,6 +16,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'kaminari'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platform: :mri
