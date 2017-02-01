@@ -1,0 +1,54 @@
+<h2>Total profit of sold products</h2>
+
+
+<%= link_to 'Download Excel', request.url + '.xlsx', class: 'btn btn-success' %>
+
+<div class="row">
+  <div class="col-8">
+    <div class="report-table">
+      <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+          <th>Product Name</th>
+          <th>Total Profit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @result.each do |row| %>
+            <tr>
+              <td><%= row[0] %></td>
+              <td><%= row[1] %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card card-inverse search-card" style="background-color: #333; border-color: #333;">
+      <div class="card-header">
+        Filtration
+      </div>
+      <br>
+      <%= form_tag :sales_per_product, method: :get do %>
+          <div class="form-group">
+            <label for="between1">Product Name</label>
+            <%= text_field_tag :product_name, nil, placeholder: 'Product Name', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label for="between1">From</label>
+            <%= date_field_tag "between1", nil, id: 'between1', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label for="between2">To</label>
+            <%= date_field_tag "between2", nil, id: 'between2', class: 'form-control' %>
+          </div>
+
+          <%= submit_tag 'Find', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

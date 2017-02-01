@@ -42,6 +42,13 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.1)
       execjs
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.1.7)
+    axlsx_rails (0.5.0)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -88,6 +95,7 @@ GEM
     ffi (1.9.17)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    htmlentities (4.3.4)
     i18n (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -181,6 +189,7 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    rubyzip (1.1.7)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -230,6 +239,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  axlsx (= 2.1.0.pre)
+  axlsx_rails
   better_errors
   bootstrap (~> 4.0.0.alpha6)
   byebug
@@ -247,6 +258,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   rspec-rails
+  rubyzip (~> 1.1.0)
   sass-rails (~> 5.0)
   simple_form
   spring

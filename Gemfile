@@ -18,6 +18,9 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'kaminari'
 gem 'simple_form'
+gem 'rubyzip', '~> 1.1.0'
+gem 'axlsx', '2.1.0.pre'
+gem 'axlsx_rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -36,7 +36,12 @@ div.main-container {
     }
   }
 
-  div.products-table, div.sales-table {
+  div.products-table, div.sales-table, div.report-table {
     margin-top: 20px;
+  }
+
+  .search-card {
+    margin-top: 20px;
+    padding: 0 20px 20px 20px;
   }
 }
