@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+.navbar-brand {
+  text-transform: uppercase;
+}
+
 div.main-container {
   margin-top: 70px;
 
@@ -32,7 +36,7 @@ div.main-container {
     }
   }
 
-  div.products-table {
+  div.products-table, div.sales-table {
     margin-top: 20px;
   }
 }

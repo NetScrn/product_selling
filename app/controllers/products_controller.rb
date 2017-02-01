@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
       flash[:success] = "Product has been successfully created"
       redirect_to products_path
     else
-      flash.now[:danger] = "Product has not been not created"
+      flash.now[:danger] = "Product has not been created"
       render 'new'
     end
   end

@@ -10,6 +10,10 @@
         <li class="nav-item <%= "active" if current_page?('/products') || current_page?('/') %>">
           <%= link_to 'Products', products_path, class: 'nav-link' %>
         </li>
+
+        <li class="nav-item <%= "active" if current_page?('/sales') %>">
+          <%= link_to 'Sales', sales_path, class: 'nav-link' %>
+        </li>
       </ul>
 
       <ul class="navbar-nav mr-auto navbar-toggler-right">

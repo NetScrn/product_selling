@@ -28,7 +28,7 @@ require 'capybara/poltergeist'
 ActiveRecord::Migration.maintain_test_schema!
 
 Capybara.javascript_driver = :poltergeist
-Capybara.default_wait_time = 15
+Capybara.default_max_wait_time = 15
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|

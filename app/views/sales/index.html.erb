@@ -1,0 +1,7 @@
+<h2>Sales</h2>
+
+<%= link_to 'Create Sale', new_sale_path, class: 'btn btn-primary' %>
+
+<%= render 'sales' %>
+
+<%= paginate @sales %>

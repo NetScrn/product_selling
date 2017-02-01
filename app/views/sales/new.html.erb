@@ -1,0 +1,13 @@
+<h2>Create Sale</h2>
+
+<div class="row">
+  <div class="col-5">
+    <%= simple_form_for @sale do |f| %>
+      <%= f.association :product, collection: @products, include_blank: false %>
+      <%= f.input :cost %>
+      <%= f.input :date_of_purchase %>
+
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

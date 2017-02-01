@@ -24,7 +24,7 @@ RSpec.feature "Users can create Products" do
     within(".product_name") do
       expect(page).to have_content "can't be blank"
     end
-    expect(page).to have_content 'Product has not been not created'
+    expect(page).to have_content 'Product has not been created'
   end
 
   scenario "Already created car" do
@@ -35,6 +35,6 @@ RSpec.feature "Users can create Products" do
     within(".product_name") do
       expect(page).to have_content "has already been taken"
     end
-    expect(page).to have_content 'Product has not been not created'
+    expect(page).to have_content 'Product has not been created'
   end
 end
