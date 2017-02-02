@@ -9,15 +9,15 @@
       <table class="table">
         <thead class="thead-inverse">
         <tr>
-          <th>Product Name</th>
+          <th>Date</th>
           <th>Total Profit</th>
         </tr>
         </thead>
         <tbody>
         <% @result.each do |row| %>
             <tr>
-              <td><%= row[0] %></td>
-              <td><%= row[1] %></td>
+              <td><%= "#{Date::MONTHNAMES[row[0]]} #{row[1].floor}" %></td>
+              <td><%= row[2] %></td>
             </tr>
         <% end %>
         </tbody>
@@ -31,10 +31,13 @@
         Filtration
       </div>
       <br>
-      <%= form_tag :sales_per_product, method: :get do %>
+      <%= form_tag :sales_per_month, method: :get do %>
           <div class="form-group">
             <label for="product_name">Product Name</label>
-            <%= text_field_tag :product_name, nil, placeholder: 'Product Name', class: 'form-control' %>
+            <%= select_tag :product_name,
+                           options_from_collection_for_select(@products, 'id', 'name'),
+                           include_blank: true,
+                           class: 'form-control' %>
           </div>
           <div class="form-group">
             <label for="between1">From</label>

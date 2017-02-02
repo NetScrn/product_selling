@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Sales Per Product") do |sheet|
+  sheet.add_row ["Date", "Total profit"]
+  @result.each do |row|
+    sheet.add_row ["#{Date::MONTHNAMES[row[0]]} #{row[1].floor}", row[2]]
+  end
+end

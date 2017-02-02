@@ -1,48 +1,32 @@
-class ReportCreator
+class PerProductReportCreator
   SALES_PER_PRODUCT_QUERY = <<-SQL
-    SELECT
-      p.name,
-      SUM(s.cost)
-    FROM products p
-    JOIN sales s ON p.id = s.product_id
-    GROUP BY p.name
-    ORDER BY SUM(s.cost) DESC
+    SELECT p.name, SUM(s.cost)
+    FROM products p JOIN sales s ON p.id = s.product_id
+    GROUP BY p.name ORDER BY SUM(s.cost) DESC
   SQL
 
   BETWEEN_DATE_QUERY = <<-SQL
-    SELECT
-      p.name,
-      SUM(s.cost)
-    FROM products p
-    JOIN sales s ON p.id = s.product_id
+    SELECT p.name, SUM(s.cost)
+    FROM products p JOIN sales s ON p.id = s.product_id
     WHERE s.date_of_purchase BETWEEN %s AND %s
-    GROUP BY p.name
-    ORDER BY SUM(s.cost) DESC
+    GROUP BY p.name ORDER BY SUM(s.cost) DESC
   SQL
 
   PRODUCT_NAME_QUERY = <<-SQL
-    SELECT
-      p.name,
-      SUM(s.cost)
-    FROM products p
-    JOIN sales s ON p.id = s.product_id
+    SELECT p.name, SUM(s.cost)
+    FROM products p JOIN sales s ON p.id = s.product_id
     WHERE p.name LIKE %s
-    GROUP BY p.name
-    ORDER BY SUM(s.cost) DESC
+    GROUP BY p.name ORDER BY SUM(s.cost) DESC
   SQL
 
   PRODUCT_NAME_AND_BETWEEN_QUERY = <<-SQL
-    SELECT
-      p.name,
-      SUM(s.cost)
-    FROM products p
+    SELECT p.name, SUM(s.cost) FROM products p
     JOIN sales s ON p.id = s.product_id
     WHERE (s.date_of_purchase BETWEEN %s AND %s) AND (p.name LIKE %s)
-    GROUP BY p.name
-    ORDER BY SUM(s.cost) DESC
+    GROUP BY p.name ORDER BY SUM(s.cost) DESC
   SQL
 
-  def self.sales_per_product(params)
+  def self.create_report(params)
     if !params[:product_name].blank? && !params[:between1].blank?
       between1, between2 = parse_time(params[:between1], params[:between2])
       product_name = quote("%#{params[:product_name]}%")
