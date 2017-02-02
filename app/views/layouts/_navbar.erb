@@ -7,13 +7,25 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item <%= "active" if current_page?('/products') || current_page?('/') %>">
-          <%= link_to 'Products', products_path, class: 'nav-link' %>
-        </li>
 
-        <li class="nav-item <%= "active" if current_page?('/sales') %>">
-          <%= link_to 'Sales', sales_path, class: 'nav-link' %>
-        </li>
+        <% if user_signed_in? %>
+            <li class="nav-item <%= "active" if current_page?('/products') || current_page?('/') %>">
+              <%= link_to 'Products', products_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item <%= "active" if current_page?('/sales') %>">
+              <%= link_to 'Sales', sales_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item <%= "active" if current_page?('/reports/sales-per-product') %>">
+              <%= link_to 'Report Per Product', sales_per_product_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item <%= "active" if current_page?('/reports/sales-per-month') %>">
+              <%= link_to 'Report Per Month', sales_per_month_path, class: 'nav-link' %>
+            </li>
+        <% else %>
+            <li class="nav-item <%= "active" if current_page?('/users/sign_in') %>">
+              <%= link_to 'Log in', new_user_session_path, class: 'nav-link' %>
+            </li>
+        <% end %>
       </ul>
 
       <ul class="navbar-nav mr-auto navbar-toggler-right">
@@ -21,13 +33,8 @@
             <li class="nav-item nav-item  navbar-text">
               Logged in as: <%= current_user.email %>
             </li>
-
             <li class="nav-item">
               <%= link_to 'Log out', destroy_user_session_path, class: 'nav-link', method: :delete %>
-            </li>
-        <% else %>
-            <li class="nav-item <%= "active" if current_page?('/users/sign_in') %>">
-              <%= link_to 'Log in', new_user_session_path, class: 'nav-link' %>
             </li>
         <% end %>
       </ul>
