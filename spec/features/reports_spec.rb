@@ -20,7 +20,7 @@ RSpec.feature 'Correct reports' do
       expect(page).to have_css("table tr", text: /Laptop.+270/)
     end
 
-    scenario "with filtration" do
+    scenario "filtration with product_name and between" do
       visit sales_per_product_path
 
       fill_in "product_name", with: 'Phone'
@@ -29,6 +29,27 @@ RSpec.feature 'Correct reports' do
       click_button 'Find'
 
       expect(page).to have_css("table tr", text: /Phone.+50/)
+      expect(page).to_not have_css("table tr", text: /Laptop/)
+    end
+
+    scenario "filtration with between" do
+      visit sales_per_product_path
+
+      fill_in "From", with: '2016-01-15'
+      fill_in "To", with: '2016-02-15'
+      click_button 'Find'
+
+      expect(page).to have_css("table tr", text: /Phone.+50/)
+      expect(page).to have_css("table tr", text: /Laptop.+150/)
+    end
+
+    scenario "filtration with product name" do
+      visit sales_per_product_path
+
+      fill_in "product_name", with: 'Phone'
+      click_button 'Find'
+
+      expect(page).to have_css("table tr", text: /Phone.+75/)
       expect(page).to_not have_css("table tr", text: /Laptop/)
     end
   end
@@ -40,7 +61,7 @@ RSpec.feature 'Correct reports' do
       expect(page).to have_css("table tr", text: /February 2016.+200/)
     end
 
-    scenario "with filtration" do
+    scenario "filtration with between and product_name" do
       visit sales_per_month_path
 
       select "Phone", from: 'product_name'
@@ -49,6 +70,28 @@ RSpec.feature 'Correct reports' do
       click_button 'Find'
 
       expect(page).to have_css("table tr", text: /January 2016.+25/)
+      expect(page).to_not have_css("table tr", text: /February/)
+    end
+
+    scenario "filtration with product_name" do
+      visit sales_per_month_path
+
+      select "Phone", from: 'product_name'
+      click_button 'Find'
+
+      expect(page).to have_css("table tr", text: /January 2016.+25/)
+      expect(page).to have_css("table tr", text: /February 2016.+50/)
+      expect(page).to have_css("table tbody tr", count: 2)
+    end
+
+    scenario "filtration with between" do
+      visit sales_per_month_path
+
+      fill_in "From", with: '2016-01-01'
+      fill_in "To", with: '2016-01-31'
+      click_button 'Find'
+
+      expect(page).to have_css("table tr", text: /January 2016.+145/)
       expect(page).to_not have_css("table tr", text: /February/)
     end
   end
